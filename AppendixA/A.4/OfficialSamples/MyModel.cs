@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Json.Schema.Serialization;
 
 namespace AppendixA.A._4.OfficialSamples;
@@ -11,5 +12,7 @@ public class MyModel
 {
     public string Foo { get; set; } = string.Empty;
     public int Bar { get; set; }
+
+    [JsonConverter(typeof(DateTimeJsonConverter))]
     public DateTime Baz { get; set; }
 }
