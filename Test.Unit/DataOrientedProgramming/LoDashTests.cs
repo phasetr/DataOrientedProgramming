@@ -6,7 +6,7 @@ namespace Test.Unit.DataOrientedProgramming;
 public class LoDashTests
 {
     [Fact]
-    public void LoDash_Example1()
+    public void LoDash_Watchmen()
     {
         var watchmen = DataModel.Watchmen;
 
@@ -26,5 +26,14 @@ public class LoDashTests
         Assert.Equal("book-item-2", _.Get(watchmen, ["bookItems", "1", "id"]));
         Assert.Equal("nyc-central-lib", _.Get(watchmen, ["bookItems", "1", "libId"]));
         Assert.False((bool) _.Get(watchmen, ["bookItems", "1", "isLent"]));
+    }
+
+    [Fact]
+    public void LoDash_Catalog()
+    {
+        var catalog = DataModel.Catalog;
+        var book = _.Get(catalog, "booksByIsbn", "978-1779501127") as Map;
+        Assert.NotNull(book);
+        Assert.Equal("978-1779501127", _.Get(book, "isbn"));
     }
 }

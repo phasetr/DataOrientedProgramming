@@ -22,15 +22,11 @@ public class DataMap
                 }
                 else
                 {
-                    if (i == inParam.Length - 1)
-                        currentHashtable.Add(inParam[i], inValue);
-                    else
-                        currentHashtable.Add(inParam[i], new Dictionary<string, dynamic>());
-
+                    currentHashtable.Add(inParam[i],
+                        i == inParam.Length - 1 ? inValue : new Dictionary<string, dynamic>());
                     currentNode = currentHashtable[inParam[i]];
                 }
             }
-
         return true;
     }
 }

@@ -27,7 +27,7 @@ public static class DataModel
         )
     );
 
-    public static Map Catalog = Map.Of(
+    public static readonly Map Catalog = Map.Of(
         "booksByIsbn", Map.Of(
             "978-1779501127", Map.Of(
                 "isbn", "978-1779501127",
