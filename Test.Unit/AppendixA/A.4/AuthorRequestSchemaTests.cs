@@ -9,11 +9,14 @@ public class AuthorRequestSchemaTests
     [Fact]
     public void AuthorRequestSchema_Succeeded1()
     {
-        const string validAuthorData = @"{
-  ""FirstName"": ""Isaac"",
-  ""LastName"": ""Asimov"",
-  ""Books"": 500
-}";
+        const string validAuthorData =
+            """
+            {
+              "FirstName": "Isaac",
+              "LastName": "Asimov",
+              "Books": 500
+            }
+            """;
         var schema = Schemas.AuthorRequestSchema;
         var jsonNode = JsonNode.Parse(validAuthorData);
         var evaluationOptions = new EvaluationOptions {OutputFormat = OutputFormat.List};
@@ -27,11 +30,14 @@ public class AuthorRequestSchemaTests
     [Fact]
     public void AuthorRequestSchema_Succeeded2()
     {
-        const string validAuthorData = @"{
-  ""FirstName"": ""Isaac"",
-  ""LastName"": ""Asimov"",
-  ""Books"": 500
-}";
+        const string validAuthorData = 
+            """
+            {
+              "FirstName": "Isaac",
+              "LastName": "Asimov",
+              "Books": 500
+            }
+            """;
         var schema = Schemas.AuthorRequestSchema;
         var jsonNode = JsonNode.Parse(validAuthorData);
         var evaluationOptions = new EvaluationOptions {OutputFormat = OutputFormat.Flag};
@@ -44,11 +50,14 @@ public class AuthorRequestSchemaTests
     [Fact]
     public void AuthorRequestSchema_Failed_BooksIsString1()
     {
-        const string validAuthorData = @"{
-  ""FirstName"": ""Isaac"",
-  ""LastName"": ""Asimov"",
-  ""Books"": ""five hundred""
-}";
+        const string validAuthorData = 
+            """
+            {
+              "FirstName": "Isaac",
+              "LastName": "Asimov",
+              "Books": "five hundred"
+            }
+            """;
         var schema = Schemas.AuthorRequestSchema;
         var jsonNode = JsonNode.Parse(validAuthorData);
         var evaluationOptions = new EvaluationOptions {OutputFormat = OutputFormat.List};
@@ -59,18 +68,23 @@ public class AuthorRequestSchemaTests
         var booksResult = validationResults.Details[3];
         Assert.False(booksResult.IsValid);
         Assert.NotNull(booksResult.Errors);
-        Assert.Equal(@"Value is ""string"" but should be ""integer""",
+        Assert.Equal("""
+                     Value is "string" but should be "integer"
+                     """,
             booksResult.Errors!["type"]);
     }
     
     [Fact]
     public void AuthorRequestSchema_Failed_BooksIsString2()
     {
-        const string validAuthorData = @"{
-  ""FirstName"": ""Isaac"",
-  ""LastName"": ""Asimov"",
-  ""Books"": ""five hundred""
-}";
+        const string validAuthorData =
+            """
+            {
+              "FirstName": "Isaac",
+              "LastName": "Asimov",
+              "Books": "five hundred"
+            }
+            """;
         var schema = Schemas.AuthorRequestSchema;
         var jsonNode = JsonNode.Parse(validAuthorData);
         var evaluationOptions = new EvaluationOptions {OutputFormat = OutputFormat.Flag};
