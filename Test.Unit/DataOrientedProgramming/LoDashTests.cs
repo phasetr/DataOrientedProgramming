@@ -17,22 +17,14 @@ public class LoDashTests
         Assert.Equal("Watchmen", _.Get(map, "title"));
         Assert.Equal(1987, _.Get(map, "publicationYear"));
 
-        var authors = _.Get(map, "authors");
-        // TODO リストも`Get`で処理したい
-        Assert.Equal("alan-moore", authors[0]);
-        Assert.Equal("dave-gibbons", authors[1]);
+        Assert.Equal("alan-moore", _.Get(map, ["authors", "0"]));
+        Assert.Equal("dave-gibbons", _.Get(map, ["authors", "1"]));
 
-        var bookItems = _.Get(map, "bookItems");
-        // TODO リストも`Get`で処理したい
-        var bookItem1 = bookItems[0] as Map;
-        Assert.NotNull(bookItem1);
-        Assert.Equal("book-item-1", _.Get(bookItem1, "id"));
-        Assert.Equal("nyc-central-lib", _.Get(bookItem1, "libId"));
-        Assert.True((bool)_.Get(bookItem1, "isLent"));
-        var bookItem2 = bookItems[1] as Map;
-        Assert.NotNull(bookItem2);
-        Assert.Equal("book-item-2", _.Get(bookItem2, "id"));
-        Assert.Equal("nyc-central-lib", _.Get(bookItem2, "libId"));
-        Assert.False((bool)_.Get(bookItem2, "isLent"));
+        Assert.Equal("book-item-1", _.Get(map, ["bookItems", "0", "id"]));
+        Assert.Equal("nyc-central-lib", _.Get(map, ["bookItems", "0", "libId"]));
+        Assert.True((bool) _.Get(map, ["bookItems", "0", "isLent"]));
+        Assert.Equal("book-item-2", _.Get(map, ["bookItems", "1", "id"]));
+        Assert.Equal("nyc-central-lib", _.Get(map, ["bookItems", "1", "libId"]));
+        Assert.False((bool) _.Get(map, ["bookItems", "1", "isLent"]));
     }
 }
