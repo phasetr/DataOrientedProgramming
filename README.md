@@ -4,6 +4,8 @@
   - GitHub, [viebel/data-oriented-programming](https://github.com/viebel/data-oriented-programming)
   - Book in Japanese [データ指向プログラミング【PDF版】](https://www.seshop.com/product/detail/25689)
 - Nuget: [lodash](https://www.nuget.org/packages/lodash)
+- [Json Schema GitHub](https://github.com/gregsdennis/json-everything)
+    - [Json Schema](https://json-everything.net/json-schema/) 
 
 ## Appendix1, Principles
 
