@@ -29,7 +29,6 @@
   <ItemGroup>
     <ProjectReference Include="..\AppendixA\AppendixA.csproj" />
     <ProjectReference Include="..\DataOrientedProgramming\DataOrientedProgramming.csproj" />
-    <ProjectReference Include="..\Helpers\Helpers.csproj" />
   </ItemGroup>
 
 </Project>
