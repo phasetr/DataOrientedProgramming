@@ -14,7 +14,7 @@ public static class _
                 var nextParam = inParams.Skip(1).ToArray();
                 return nextParam.Length == 0 ? result : Get(result, nextParam);
             }
-            case List list:
+            case List<dynamic> list:
             {
                 var key = inParams[0];
 
@@ -33,7 +33,7 @@ public static class _
 
     public static dynamic Map(IEnumerable<string> inKeys, Func<string, dynamic> inFunction)
     {
-        var result = new List();
+        var result = new List<dynamic>();
         result.AddRange(inKeys.Select(key => inFunction(key)));
         return result;
     }
