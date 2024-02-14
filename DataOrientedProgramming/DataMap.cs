@@ -2,7 +2,7 @@ namespace DataOrientedProgramming;
 
 public class DataMap
 {
-    public dynamic Value { get; } = null;
+    private dynamic? Value { get; } = null;
 
     public bool SetData(dynamic inValue, params string[] inParam)
     {
@@ -13,12 +13,11 @@ public class DataMap
             {
                 currentNode = new Dictionary<string, dynamic>();
             }
-            else if (currentNode is Dictionary<string, dynamic>)
+            else if (currentNode is Dictionary<string, dynamic> currentHashtable)
             {
-                var currentHashtable = currentNode as Dictionary<string, dynamic>;
-                if (currentHashtable.ContainsKey(inParam[i]))
+                if (currentHashtable.TryGetValue(inParam[i], out dynamic? value))
                 {
-                    currentNode = currentHashtable[inParam[i]];
+                    currentNode = value;
                 }
                 else
                 {
