@@ -10,7 +10,7 @@ public static class AuthorLibrary
     /// <param name="catalogData"></param>
     /// <param name="book"></param>
     /// <returns></returns>
-    public static List<string> AuthorNames(Map catalogData, Map book)
+    public static List<string> AuthorNames(Dictionary<string, dynamic> catalogData, Dictionary<string, dynamic> book)
     {
         var authorIds = (List<dynamic>) _.Get(book, "authorIds");
         return authorIds

@@ -9,7 +9,7 @@ public class BookInfoLibraryTests
     [Fact]
     public void BookInfoTest()
     {
-        var book = new Map
+        var book = new Dictionary<string, dynamic>
         {
             ["title"] = "Watchmen",
             ["isbn"] = "978-1779501127",
@@ -19,7 +19,7 @@ public class BookInfoLibraryTests
             }
         };
         var actual = BookInfoLibrary.BookInfo(Catalog.Data, book);
-        var expected = new Map
+        var expected = new Dictionary<string, dynamic>
         {
             ["title"] = "Watchmen",
             ["isbn"] = "978-1779501127",
@@ -36,7 +36,7 @@ public class BookInfoLibraryTests
     {
         var actual = BookInfoLibrary.SearchBooksByTitle(Catalog.Data, "Wat");
         var expected = CreateData.ToListDynamic(
-            Map.Of(
+            CreateData.ToDictionaryDynamic(
                 "title", "Watchmen",
                 "isbn", "978-1779501127",
                 "authorNames", CreateData.ToListDynamic("Alan Moore", "Dave Gibbons")));

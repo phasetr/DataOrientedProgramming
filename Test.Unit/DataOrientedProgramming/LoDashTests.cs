@@ -32,7 +32,7 @@ public class LoDashTests
     public void LoDash_Catalog()
     {
         var catalog = DataModel.Catalog;
-        var book = _.Get(catalog, "booksByIsbn", "978-1779501127") as Map;
+        var book = (Dictionary<string, dynamic>)_.Get(catalog, "booksByIsbn", "978-1779501127");
         Assert.NotNull(book);
         Assert.Equal("978-1779501127", _.Get(book, "isbn"));
     }

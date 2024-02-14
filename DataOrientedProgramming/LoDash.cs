@@ -6,7 +6,7 @@ public static class _
     {
         switch (inTarget)
         {
-            case Map map:
+            case Dictionary<string, dynamic> map:
             {
                 var key = inParams[0];
                 if (!map.TryGetValue(key, out var result))
