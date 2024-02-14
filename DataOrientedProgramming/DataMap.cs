@@ -27,6 +27,7 @@ public class DataMap
                     currentNode = currentHashtable[inParam[i]];
                 }
             }
+
         return true;
     }
 }

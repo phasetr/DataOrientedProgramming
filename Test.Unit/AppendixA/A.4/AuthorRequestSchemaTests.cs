@@ -30,7 +30,7 @@ public class AuthorRequestSchemaTests
     [Fact]
     public void AuthorRequestSchema_Succeeded2()
     {
-        const string validAuthorData = 
+        const string validAuthorData =
             """
             {
               "FirstName": "Isaac",
@@ -50,7 +50,7 @@ public class AuthorRequestSchemaTests
     [Fact]
     public void AuthorRequestSchema_Failed_BooksIsString1()
     {
-        const string validAuthorData = 
+        const string validAuthorData =
             """
             {
               "FirstName": "Isaac",
@@ -73,7 +73,7 @@ public class AuthorRequestSchemaTests
                      """,
             booksResult.Errors!["type"]);
     }
-    
+
     [Fact]
     public void AuthorRequestSchema_Failed_BooksIsString2()
     {

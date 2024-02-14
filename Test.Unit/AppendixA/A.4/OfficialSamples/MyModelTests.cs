@@ -32,7 +32,7 @@ public class MyModelTests
     public void OfficialSample_Failed2()
     {
         // https://blog.json-everything.net/posts/deserialization-with-schemas/
-        const string jsonText = 
+        const string jsonText =
             """
             {
               "Foo": "foo",
@@ -53,7 +53,7 @@ public class MyModelTests
     public void OfficialSample_Failed3()
     {
         // https://blog.json-everything.net/posts/deserialization-with-schemas/
-        const string jsonText = 
+        const string jsonText =
             """
             {
               "Foo": "foo is long enough",
