@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using DataOrientedProgramming;
 using Test.Unit.SampleData;
 
@@ -32,7 +33,7 @@ public class LoDashTests
     public void LoDash_Catalog()
     {
         var catalog = DataModel.Catalog;
-        var book = (Dictionary<string, dynamic>) _.Get(catalog, "booksByIsbn", "978-1779501127");
+        var book = (ImmutableDictionary<string, dynamic>) _.Get(catalog, "booksByIsbn", "978-1779501127");
         Assert.NotNull(book);
         Assert.Equal("978-1779501127", _.Get(book, "isbn"));
     }

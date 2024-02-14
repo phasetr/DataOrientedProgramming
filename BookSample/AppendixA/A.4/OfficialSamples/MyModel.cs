@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
 using Json.Schema.Serialization;
 
-namespace AppendixA.A._4.OfficialSamples;
+namespace BookSample.AppendixA.A._4.OfficialSamples;
 
 /// <summary>
 ///     [JSON Deserialization with JSON Schema

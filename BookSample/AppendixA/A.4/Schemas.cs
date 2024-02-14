@@ -1,6 +1,6 @@
 using Json.Schema;
 
-namespace AppendixA.A._4;
+namespace BookSample.AppendixA.A._4;
 
 public static class Schemas
 {

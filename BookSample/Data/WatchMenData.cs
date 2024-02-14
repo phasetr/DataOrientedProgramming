@@ -1,10 +1,11 @@
+using System.Collections.Immutable;
 using DataOrientedProgramming;
 
 namespace BookSample.Data;
 
-public static class WatchMen
+public static class WatchMenData
 {
-    public static readonly Dictionary<string, dynamic> Data = CreateData.ToDictionaryDynamic(
+    public static readonly ImmutableDictionary<string, dynamic> Data = CreateData.ToDictionaryDynamic(
         "isbn", "978-1779501127",
         "title", "Watchmen",
         "publicationYear", 1987,

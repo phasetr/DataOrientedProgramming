@@ -8,6 +8,6 @@ public class List0306
     [Fact]
     public void Test()
     {
-        Assert.Equal("Watchmen", _.Get(Catalog.Data, ["booksByIsbn", "978-1779501127", "title"]));
+        Assert.Equal("Watchmen", _.Get(CatalogData.Data, ["booksByIsbn", "978-1779501127", "title"]));
     }
 }

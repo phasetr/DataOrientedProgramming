@@ -1,8 +1,8 @@
 using System.Text.Json.Nodes;
-using AppendixA.A._4;
+using BookSample.AppendixA.A._4;
 using Json.Schema;
 
-namespace Test.Unit.AppendixA.A._4;
+namespace Test.Unit.BookSample.AppendixA.A._4;
 
 public class AuthorRequestSchemaTests
 {

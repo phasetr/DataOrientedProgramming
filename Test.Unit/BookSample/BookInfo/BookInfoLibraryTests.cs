@@ -1,5 +1,6 @@
-using BookSample.BookInfo;
+using System.Collections.Immutable;
 using BookSample.Data;
+using BookSample.Functions;
 using DataOrientedProgramming;
 
 namespace Test.Unit.BookSample.BookInfo;
@@ -17,24 +18,21 @@ public class BookInfoLibraryTests
             {
                 "alan-moore"
             }
-        };
-        var actual = BookInfoLibrary.BookInfo(Catalog.Data, book);
+        }.ToImmutableDictionary();
+        var actual = Catalog.BookInfo(CatalogData.Data, book);
         var expected = new Dictionary<string, dynamic>
         {
             ["title"] = "Watchmen",
             ["isbn"] = "978-1779501127",
-            ["authorNames"] = new[]
-            {
-                "Alan Moore"
-            }
-        };
+            ["authorNames"] = new List<string> {"Alan Moore"}.ToImmutableList()
+        }.ToImmutableDictionary();
         Assert.Equal(expected, actual);
     }
 
     [Fact]
     public void SearchBooksByTitle_Success()
     {
-        var actual = BookInfoLibrary.SearchBooksByTitle(Catalog.Data, "Wat");
+        var actual = Catalog.SearchBooksByTitle(CatalogData.Data, "Wat");
         var expected = CreateData.ToListDynamic(
             CreateData.ToDictionaryDynamic(
                 "title", "Watchmen",

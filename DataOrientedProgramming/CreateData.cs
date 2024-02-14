@@ -1,15 +1,17 @@
+using System.Collections.Immutable;
+
 namespace DataOrientedProgramming;
 
 public static class CreateData
 {
-    public static List<dynamic> ToListDynamic(params dynamic[] inParams)
+    public static ImmutableList<dynamic> ToListDynamic(params dynamic[] inParams)
     {
         var result = new List<dynamic>();
         result.AddRange(inParams);
-        return result;
+        return result.ToImmutableList();
     }
 
-    public static Dictionary<string, dynamic> ToDictionaryDynamic(params dynamic[] inParams)
+    public static ImmutableDictionary<string, dynamic> ToDictionaryDynamic(params dynamic[] inParams)
     {
         if (inParams == null || inParams.Length == 0) throw new ArgumentNullException();
 
@@ -23,6 +25,6 @@ public static class CreateData
             result.Add(key, value);
         }
 
-        return result;
+        return result.ToImmutableDictionary();
     }
 }

@@ -1,10 +1,11 @@
+using System.Collections.Immutable;
 using DataOrientedProgramming;
 
 namespace Test.Unit.SampleData;
 
 public static class DataModel
 {
-    public static readonly Dictionary<string, dynamic> Watchmen = CreateData.ToDictionaryDynamic(
+    public static readonly ImmutableDictionary<string, dynamic> Watchmen = CreateData.ToDictionaryDynamic(
         "isbn", "978-1779501127",
         "title", "Watchmen",
         "publicationYear", 1987,
@@ -27,7 +28,7 @@ public static class DataModel
         )
     );
 
-    public static readonly Dictionary<string, dynamic> Catalog = CreateData.ToDictionaryDynamic(
+    public static readonly ImmutableDictionary<string, dynamic> Catalog = CreateData.ToDictionaryDynamic(
         "booksByIsbn", CreateData.ToDictionaryDynamic(
             "978-1779501127", CreateData.ToDictionaryDynamic(
                 "isbn", "978-1779501127",

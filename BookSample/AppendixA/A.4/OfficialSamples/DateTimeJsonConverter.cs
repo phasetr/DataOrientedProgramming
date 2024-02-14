@@ -2,7 +2,7 @@ using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace AppendixA.A._4.OfficialSamples;
+namespace BookSample.AppendixA.A._4.OfficialSamples;
 
 public class DateTimeJsonConverter : JsonConverter<DateTime>
 {
@@ -15,7 +15,7 @@ public class DateTimeJsonConverter : JsonConverter<DateTime>
     {
         return reader.GetString()! == null
             ? DateTime.MinValue
-            : DateTime.ParseExact(reader.GetString()!, DateTimeFormat, CultureInfo.InvariantCulture);
+            : DateTime.ParseExact((string) reader.GetString()!, DateTimeFormat, CultureInfo.InvariantCulture);
     }
 
     public override void Write(

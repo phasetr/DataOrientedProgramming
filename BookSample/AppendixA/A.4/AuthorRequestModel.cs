@@ -1,6 +1,6 @@
 using Json.Schema.Serialization;
 
-namespace AppendixA.A._4;
+namespace BookSample.AppendixA.A._4;
 
 [JsonSchema(typeof(Schemas), nameof(Schemas.AuthorRequestSchema))]
 public class AuthorRequestModel

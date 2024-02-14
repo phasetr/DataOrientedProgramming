@@ -1,4 +1,4 @@
-namespace AppendixA.A._1;
+namespace BookSample.AppendixA.A._1;
 
 /// <summary>
 ///     P.393, List A-1. Violate the principle 1 in OOP

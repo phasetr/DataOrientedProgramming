@@ -1,9 +1,9 @@
 using System.Text.Json;
-using AppendixA.A._4.OfficialSamples;
+using BookSample.AppendixA.A._4.OfficialSamples;
 using Json.Schema;
 using Json.Schema.Serialization;
 
-namespace Test.Unit.AppendixA.A._4.OfficialSamples;
+namespace Test.Unit.BookSample.AppendixA.A._4.OfficialSamples;
 
 public class MyModelTests
 {

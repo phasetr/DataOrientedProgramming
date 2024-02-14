@@ -1,6 +1,6 @@
 using System.Collections.Immutable;
 
-namespace AppendixA.A._1;
+namespace BookSample.AppendixA.A._1;
 
 /// <summary>
 ///     P.395, List.A-3. Follow the principle 1 in OOP

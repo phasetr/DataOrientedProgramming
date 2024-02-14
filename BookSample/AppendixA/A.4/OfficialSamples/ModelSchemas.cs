@@ -1,6 +1,6 @@
 using Json.Schema;
 
-namespace AppendixA.A._4.OfficialSamples;
+namespace BookSample.AppendixA.A._4.OfficialSamples;
 
 /// <summary>
 ///     [JSON Deserialization with JSON Schema

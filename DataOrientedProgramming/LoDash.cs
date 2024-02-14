@@ -1,3 +1,5 @@
+using System.Collections.Immutable;
+
 namespace DataOrientedProgramming;
 
 public static class _
@@ -6,7 +8,7 @@ public static class _
     {
         switch (inTarget)
         {
-            case Dictionary<string, dynamic> map:
+            case ImmutableDictionary<string, dynamic> map:
             {
                 var key = inParams[0];
                 if (!map.TryGetValue(key, out var result))
@@ -14,7 +16,7 @@ public static class _
                 var nextParam = inParams.Skip(1).ToArray();
                 return nextParam.Length == 0 ? result : Get(result, nextParam);
             }
-            case List<dynamic> list:
+            case ImmutableList<dynamic> list:
             {
                 var key = inParams[0];
 

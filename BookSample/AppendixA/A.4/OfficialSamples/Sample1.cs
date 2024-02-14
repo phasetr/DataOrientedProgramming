@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace AppendixA.A._4.OfficialSamples;
+namespace BookSample.AppendixA.A._4.OfficialSamples;
 
 public class Sample1
 {
