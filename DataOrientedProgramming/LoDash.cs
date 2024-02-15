@@ -12,7 +12,7 @@ public static class _
             {
                 var key = inParams[0];
                 if (!map.TryGetValue(key, out var result))
-                    throw new KeyNotFoundException($"The key {key} not found.");
+                    return new Dictionary<string, dynamic>().ToImmutableDictionary();
                 var nextParam = inParams.Skip(1).ToArray();
                 return nextParam.Length == 0 ? result : Get(result, nextParam);
             }

@@ -3,10 +3,19 @@ using BookSample.Data;
 using BookSample.Functions;
 using DataOrientedProgramming;
 
-namespace Test.Unit.BookSample.BookInfo;
+namespace Test.Unit.BookSample.Functions;
 
-public class BookInfoLibraryTests
+public class CatalogTests
 {
+    [Fact]
+    public void AuthorNamesTest()
+    {
+        var book = _.Get(CatalogData.Data, "booksByIsbn", "978-1779501127");
+        var actual = (ImmutableList<string>) Catalog.AuthorNames(CatalogData.Data, book);
+        Assert.Equal("Alan Moore", actual[0]);
+        Assert.Equal("Dave Gibbons", actual[1]);
+    }
+
     [Fact]
     public void BookInfoTest()
     {
