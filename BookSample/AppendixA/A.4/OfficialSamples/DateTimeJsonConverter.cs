@@ -15,7 +15,7 @@ public class DateTimeJsonConverter : JsonConverter<DateTime>
     {
         return reader.GetString()! == null
             ? DateTime.MinValue
-            : DateTime.ParseExact((string) reader.GetString()!, DateTimeFormat, CultureInfo.InvariantCulture);
+            : DateTime.ParseExact(reader.GetString()!, DateTimeFormat, CultureInfo.InvariantCulture);
     }
 
     public override void Write(

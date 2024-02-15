@@ -1,40 +1,78 @@
-using System.Collections.Immutable;
 using DataOrientedProgramming;
-using Test.Unit.SampleData;
 
 namespace Test.Unit.DataOrientedProgramming;
 
 public class LoDashTests
 {
     [Fact]
-    public void LoDash_Watchmen()
+    public void Get_Dict_Success()
     {
-        var watchmen = DataModel.Watchmen;
-
-        Assert.Equal("Interesting", _.Get(watchmen, "reviews", "reader1"));
-        Assert.Equal("5 of 5!", _.Get(watchmen, "reviews", "me"));
-
-        Assert.Equal("978-1779501127", _.Get(watchmen, "isbn"));
-        Assert.Equal("Watchmen", _.Get(watchmen, "title"));
-        Assert.Equal(1987, _.Get(watchmen, "publicationYear"));
-
-        Assert.Equal("alan-moore", _.Get(watchmen, ["authors", "0"]));
-        Assert.Equal("dave-gibbons", _.Get(watchmen, ["authors", "1"]));
-
-        Assert.Equal("book-item-1", _.Get(watchmen, ["bookItems", "0", "id"]));
-        Assert.Equal("nyc-central-lib", _.Get(watchmen, ["bookItems", "0", "libId"]));
-        Assert.True((bool) _.Get(watchmen, ["bookItems", "0", "isLent"]));
-        Assert.Equal("book-item-2", _.Get(watchmen, ["bookItems", "1", "id"]));
-        Assert.Equal("nyc-central-lib", _.Get(watchmen, ["bookItems", "1", "libId"]));
-        Assert.False((bool) _.Get(watchmen, ["bookItems", "1", "isLent"]));
+        var d = CreateData.ToDictionaryDynamic("a", 1, "b", 2);
+        var result = _.Get(d, "a");
+        Assert.Equal(1, result);
     }
 
     [Fact]
-    public void LoDash_Catalog()
+    public void Get_Dict_Failure()
     {
-        var catalog = DataModel.Catalog;
-        var book = (ImmutableDictionary<string, dynamic>) _.Get(catalog, "booksByIsbn", "978-1779501127");
-        Assert.NotNull(book);
-        Assert.Equal("978-1779501127", _.Get(book, "isbn"));
+        var d = CreateData.ToDictionaryDynamic("a", 1, "b", 2);
+        var result = _.Get(d, "notExist");
+        Assert.Null(result);
+    }
+
+    [Fact]
+    public void Get_List_Success()
+    {
+        var l = CreateData.ToListDynamic(1, 2, 3);
+        var result = _.Get(l, "1");
+        Assert.Equal(2, result);
+    }
+
+    [Fact]
+    public void Get_List_Failure()
+    {
+        var l = CreateData.ToListDynamic(1, 2, 3);
+        var result = _.Get(l, "3");
+        Assert.IsType<IndexOutOfRangeException>(result);
+    }
+
+    [Fact]
+    public void Get_ComplexMap_Success()
+    {
+        var m = CreateData.ToDictionaryDynamic(
+            "a", CreateData.ToDictionaryDynamic("b",
+                CreateData.ToListDynamic(1, 2, 3)));
+        var result = _.Get(m, "a", "b", "1");
+        Assert.Equal(2, result);
+    }
+
+    [Fact]
+    public void Get_ComplexMap_Failure()
+    {
+        var m = CreateData.ToDictionaryDynamic(
+            "a", CreateData.ToDictionaryDynamic("b",
+                CreateData.ToListDynamic(1, 2, 3)));
+        var result = _.Get(m, "a", "b", "3");
+        Assert.IsType<IndexOutOfRangeException>(result);
+    }
+
+    [Fact]
+    public void Has_Success()
+    {
+        var d = CreateData.ToDictionaryDynamic(
+            "a", 1,
+            "b", 2);
+        var result = _.Has(d, "a");
+        Assert.True(result);
+    }
+
+    [Fact]
+    public void Has_Failure()
+    {
+        var d = CreateData.ToDictionaryDynamic(
+            "a", 1,
+            "b", 2);
+        var result = _.Has(d, "c");
+        Assert.False(result);
     }
 }

@@ -2,6 +2,7 @@ using System.Collections.Immutable;
 using System.Text.Json;
 using DataOrientedProgramming;
 using static BookSample.Functions.Catalog;
+
 namespace BookSample.Functions;
 
 public static class Library

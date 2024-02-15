@@ -4,21 +4,27 @@ namespace DataOrientedProgramming;
 
 public static class _
 {
-    public static dynamic Get(dynamic inTarget, params string[] inParams)
+    /// <summary>
+    ///     `map`の`path`にある値を取得する
+    /// </summary>
+    /// <param name="map"></param>
+    /// <param name="path"></param>
+    /// <returns></returns>
+    public static dynamic? Get(dynamic map, params string[] path)
     {
-        switch (inTarget)
+        switch (map)
         {
-            case ImmutableDictionary<string, dynamic> map:
+            case ImmutableDictionary<string, dynamic> dict:
             {
-                var key = inParams[0];
-                if (!map.TryGetValue(key, out var result))
-                    return new Dictionary<string, dynamic>().ToImmutableDictionary();
-                var nextParam = inParams.Skip(1).ToArray();
+                var key = path[0];
+                if (!dict.TryGetValue(key, out var result))
+                    return null;
+                var nextParam = path.Skip(1).ToArray();
                 return nextParam.Length == 0 ? result : Get(result, nextParam);
             }
             case ImmutableList<dynamic> list:
             {
-                var key = inParams[0];
+                var key = path[0];
 
                 if (!int.TryParse(key, out var index))
                     return new FormatException($"The key {key} is not a number.");
@@ -26,17 +32,21 @@ public static class _
                     return new IndexOutOfRangeException($"The index {index} is out of range.");
 
                 var result = list[index];
-                var nextParam = inParams.Skip(1).ToArray();
+                var nextParam = path.Skip(1).ToArray();
                 return nextParam.Length == 0 ? result : Get(result, nextParam);
             }
             default: return new Exception();
         }
     }
 
-    public static dynamic Map(IEnumerable<string> inKeys, Func<string, dynamic> inFunction)
+    /// <summary>
+    ///     `map`に`path`があるかどうかを調べる
+    /// </summary>
+    /// <param name="map"></param>
+    /// <param name="path"></param>
+    /// <returns></returns>
+    public static bool Has(ImmutableDictionary<string, dynamic> map, params string[] path)
     {
-        var result = new List<dynamic>();
-        result.AddRange(inKeys.Select(key => inFunction(key)));
-        return result;
+        return Get(map, path) != null;
     }
 }

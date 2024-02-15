@@ -15,7 +15,7 @@ public class DataMap
             }
             else if (currentNode is Dictionary<string, dynamic> currentHashtable)
             {
-                if (currentHashtable.TryGetValue(inParam[i], out dynamic? value))
+                if (currentHashtable.TryGetValue(inParam[i], out var value))
                 {
                     currentNode = value;
                 }

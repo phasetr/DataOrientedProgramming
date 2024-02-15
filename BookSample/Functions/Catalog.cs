@@ -11,9 +11,12 @@ public static class Catalog
     /// <param name="catalogData"></param>
     /// <param name="book"></param>
     /// <returns></returns>
-    public static ImmutableList<string> AuthorNames(ImmutableDictionary<string, dynamic> catalogData, ImmutableDictionary<string, dynamic> book)
+    public static ImmutableList<string> AuthorNames(ImmutableDictionary<string, dynamic> catalogData,
+        ImmutableDictionary<string, dynamic> book)
     {
-        var authorIds = (IEnumerable<dynamic>) _.Get(book, "authorIds");
+        var temp =  _.Get(book, "authorIds");
+        if (temp == null) return ImmutableList<string>.Empty;
+        var authorIds = (IEnumerable<dynamic>) temp;
         return authorIds
             .Select(authorId => (string) _.Get(catalogData, "authorsById", authorId, "name"))
             .ToImmutableList() ?? [];
@@ -27,11 +30,12 @@ public static class Catalog
         {
             {"title", _.Get(book, "title")},
             {"isbn", _.Get(book, "isbn")},
-            {"authorNames", Catalog.AuthorNames(catalogData, book)}
+            {"authorNames", AuthorNames(catalogData, book)}
         }.ToImmutableDictionary();
     }
 
-    public static ImmutableList<dynamic> SearchBooksByTitle(ImmutableDictionary<string, dynamic> catalogData, string query)
+    public static ImmutableList<dynamic> SearchBooksByTitle(ImmutableDictionary<string, dynamic> catalogData,
+        string query)
     {
         ImmutableDictionary<string, dynamic> allBooks =
             _.Get(catalogData, "booksByIsbn");
